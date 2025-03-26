@@ -1,23 +1,18 @@
-def fibonacci(a):
-    p = sum = 0
-    q = 1
-    print ("The Fibonacci Series is:")
-    if (a == 0):
-        print ("Nothing to print")
-        return
-    elif (a == 1):
-        print (str(p) + "\t" + "")
-        return
-    elif (a == 2):
-        print (str(p) + "\t" + str(q) + "")
-        return    
-    else:
-        print (str(p) + "\t" + str(q) + "\t", end = " ")
-        for i in range (a - 2):
-            sum = p + q
-            print (str(sum) + "\t" , end = " "),
-            p = q
-            q = sum            
+def fibonacci(number):
 
-a = int(input("Enter a number: "))
-fibonacci(a)
+    if number <= 0:
+        print("Nothing to print")
+        return
+    
+    first, second = 0, 1
+
+    fib_series = [str(first), str(second)] if number > 1 else [str(first)]
+    
+    for _ in range(number - 2):
+        first, second = second, first + second
+        fib_series.append(str(second))
+    
+    print("The Fibonacci Series is:\n" + "\t".join(fib_series))
+
+number = int(input("Enter a number: "))
+fibonacci(number)
